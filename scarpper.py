@@ -61,17 +61,27 @@ class Scrapper():
     sleep(1)
 
     try:
-      Btn_No = WebDriverWait(browser, 10).until(
-        EC.presence_of_element_located((By.ID, "idBtn_Back"))
+      Btn_Yes = WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.ID, "idSIButton9"))
       )
-      Btn_No.click()
+      Btn_Yes.click()
     except:
-      print("BTN NO went wrong")
+      print("BTN Yes went wrong")
 
-    sleep(3)
+    sleep(1)
 
-    Use_Web_App_Link = browser.find_element_by_link_text("Use the web app instead")
-    Use_Web_App_Link.click()  
+    try:
+      Use_Web_App_Link = WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.XPATH , "/html/body/promote-desktop/div/div/div/div[1]/div[2]/div/a")) 
+      )
+      Use_Web_App_Link.click()
+    except:
+      print("USE WEB APP LINK DIDN't WORK")
+
+    # Use_Web_App_Link = browser.find_element_by_link_text("Use the web app instead")
+    # Use_Web_App_Link.click()  
+
+
     # try:
     #   Use_Web_App_Link = WebDriverWait(browser, 10).until(
     #     EC.((By.CLASS_NAME, "use-app-link"))
@@ -80,6 +90,12 @@ class Scrapper():
     # except:
     #   print(" USE WEB APP LINK DIDN't WORK")
 
+  def OneDrive():
+
+    browser.get("https://onedrive.live.com/about/en-us/signin/")
+    
+
 
 
 Scrapper.Login()
+Scrapper.OneDrive()
