@@ -90,12 +90,17 @@ class Scrapper():
     # except:
     #   print(" USE WEB APP LINK DIDN't WORK")
 
-  def OneDrive():
+class OneDrive():
 
-    browser.get("https://onedrive.live.com/about/en-us/signin/")
-    
+  def Open_Onedrive():
+
+    browser.execute_script("window.open('https://onedrive.live.com/about/en-us/signin/', 'new window')")
+
+  def Login():
+    try: 
+      Login_Email = WebDriverWait(browser, 10).until(
+        EC.presence_of_element_located((By.XPATH, 
+      
 
 
 
-Scrapper.Login()
-Scrapper.OneDrive()
